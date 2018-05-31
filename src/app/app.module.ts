@@ -11,8 +11,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { PostDetailsGuard } from './guards/post-details.guard';
 
 const my_routes = [
+    { path: 'detail/:id', canActivate: [PostDetailsGuard], component: PostDetailsComponent},
     { path: 'list', component: PostsListComponent},
     { path: 'welcome', component: WelcomeComponent},
     { path: '',  redirectTo: '/welcome', pathMatch: 'full'},
@@ -27,7 +30,8 @@ const my_routes = [
     NavbarComponent,
     FooterComponent,
     WelcomeComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    PostDetailsComponent
   ],
   imports: [
     BrowserModule,

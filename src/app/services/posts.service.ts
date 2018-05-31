@@ -9,12 +9,16 @@ import { Observable } from 'rxjs';
 })
 export class PostsService {
 
-  //url: string = 'https://jsonplaceholder.typicode.com/posts';
+  // url: string = 'https://jsonplaceholder.typicode.com/posts';
   url: string = 'http://localhost:8080/api/posts';
 
   constructor(private _http: HttpClient) { }
 
   getAllPosts(): Observable<IPost[]> {
     return this._http.get<IPost[]>(this.url);
+  }
+
+  getPostById(id: number): Observable<IPost> {
+    return this._http.get<IPost>(this.url + '/' + id);
   }
 }
